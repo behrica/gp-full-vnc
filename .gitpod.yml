@@ -1,6 +1,17 @@
 image:
   file: .gitpod.Dockerfile
+  
 
+tasks:
+  - name: ddom
+    init: >
+    rm -rf ~/.emacs.d/ && git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d &&
+ ~/.emacs.d/bin/doom env &&
+ yes | ~/.emacs.d/bin/doom -y install &&
+ rm -rf /home/gitpod/.doom.d/ && git clone https://github.com/behrica/doom.d.git /home/gitpod/.doom.d/ &&
+ GIT_SSL_NO_VERIFY=true ~/.emacs.d/bin/doom -y sync  
+
+    
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
